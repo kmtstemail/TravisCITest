@@ -21,23 +21,8 @@
   <connection>scm:git:https://github.com/kmtstemail/TravisCITest.git</connection>
   <url>https://github.com/kmtstemail/TravisCITest</url>        
 </scm>
-
-<developers>
-  <developer>
-    <name>Ketan Mulay</name>
-    <email>kmtstemail@gmail.com</email>
-  </developer>
-</developers>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-    </dependencies>
          
-         <distributionmanagement>
+<distributionmanagement>
   <site>
     <id>api.wiki</id>
     <url>https://github.com/kmtstemail/TravisCITest/wiki</url>
@@ -53,5 +38,20 @@
   </repository>
 
 </distributionmanagement>
+
+<developers>
+  <developer>
+    <name>Ketan Mulay</name>
+    <email>kmtstemail@gmail.com</email>
+  </developer>
+</developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
 
 </project>
