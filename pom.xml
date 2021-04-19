@@ -7,15 +7,9 @@
     <groupId>io.github.kmtstemail</groupId>
     <artifactId>TravisCITest</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-    </dependencies>
-
-    <licenses>
+    <packaging>jar</packaging>
+         
+<licenses>      
   <license>
     <name>Apache License, Version 2.0</name>
     <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
@@ -52,5 +46,13 @@
     <organizationurl>https://github.com/kmtstemail</organizationurl>
   </developer>
 </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
 
 </project>
