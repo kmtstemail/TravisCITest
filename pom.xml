@@ -15,5 +15,42 @@
         </dependency>
     </dependencies>
 
+    <licenses>
+  <license>
+    <name>Apache License, Version 2.0</name>
+    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    <distribution>repo</distribution>
+  </license>
+</licenses>
+
+<scm>
+  <connection>scm:git:https://github.com/kmtstemail/TravisCITest.git</connection>
+  <url>https://github.com/kmtstemail/TravisCITest</url>        
+</scm>
+
+<distributionmanagement>
+  <site>
+    <id>api.wiki</id>
+    <url>https://github.com/kmtstemail/TravisCITest/wiki</url>
+  </site>
+
+  <snapshotrepository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+  </snapshotrepository>
+  <repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+  </repository>
+
+</distributionmanagement>
+
+<developers>
+  <developer>
+    <name>Ketan Mulay</name>
+    <email>kmtstemail@gmail.com</email>
+    <organizationurl>https://github.com/kmtstemail</organizationurl>
+  </developer>
+</developers>
 
 </project>
