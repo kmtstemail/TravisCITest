@@ -32,22 +32,6 @@
   <url>https://github.com/kmtstemail/TravisCITest</url>        
 </scm>
          
-<distributionmanagement>
-  <site>
-    <id>api.wiki</id>
-    <url>https://github.com/kmtstemail/TravisCITest/wiki</url>
-  </site>
-
-  <snapshotrepository>
-    <id>ossrh</id>
-    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-  </snapshotrepository>
-  <repository>
-    <id>ossrh</id>
-    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-  </repository>
-
-</distributionmanagement>
 
 <developers>
   <developer>
