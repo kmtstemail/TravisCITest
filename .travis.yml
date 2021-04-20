@@ -34,6 +34,9 @@ deploy:
   skip_cleanup: true
   on:
     repo: kmtstemail/TravisCITest
+    branches:
+      only:
+        - master
   name: $project_version
 
 cache:
