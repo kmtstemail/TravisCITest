@@ -36,7 +36,7 @@ deploy:
     repo: kmtstemail/TravisCITest
     branches:
       only:
-        - master
+        - main
   name: $project_version
 
 cache:
