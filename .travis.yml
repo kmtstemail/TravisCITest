@@ -1,10 +1,41 @@
 language: java
 
+## export GPG details
+before_install:
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
+install:
+  mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
 addons:
   apt:
     packages:
-    - libxml2-utils
+      - libxml2-utils
 
 jdk: openjdk8
 
-script: mvn source:jar javadoc:jar test -B
+## Build and release to maven central  
+script:
+  mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
+
+## Get the project version
+before_deploy:
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+
+## Create release in GitHub    
+deploy:
+  provider: releases
+  api_key:
+    secure: WPTtPbRy6H+TYqyxIvwrzBGmmMbJpWfHwJr0wx/0L7e5nnldVp9cEvno9CL/P32m1tmWRp6UtlqgJI8eFiT8UZNtk+aluLW7w2ZZC6rMrBbZtv8haurw5gAEddu16UolzT/1u3pZzqeDimctHSpbybbzw+WNMXmY/XCfnO2FZNnarVPL+orrnOyxFFWPr1hqknwOat8rlcEB3CBI++RcT0MG+Kumwc5Ttumpq5lHG3EsN1uuTBcqoxoCuykUFm/nv+IWVxPcBx9rUY/Y+rp/KIrmQ9c8ZtMIIHi7yuTSeMvo3iIcSkeAwnvVfRiOdo82Gt2JcJkZyRh/mPLbFACWssSoBVLaDEazxqxJSnlkHezd8BssEo5SobdxDynPLlYltjQyRraxirYBqXEhLgsb/8RkNPd5XNd0Ewump4Vmkb4WGc7l32tuKg70aQwUmAg4LQfMCuYC+QcUGlXSBSFaC6m02MOcxZgoh69WZDvffsELPkN7L1L80BmtMSto77xJtdXlOwxE3QrmlOGbGY8a8dI/Pqi690tjxuaTZb/ixUbNI6cDxm82XIKVNdOgbCK2ffsy40PSJDcUsl5mLquxNl/NBLopJsMu2E66e12WytLTJ6FbPEJaCZIae7OYTu85yfU8qfaRb8A8I5Rs2Vtsa1uT1NMtX3nEgxe5Lo/yFq4=
+  file:
+    - ./target/TravisCITest-$project_version.jar
+  skip_cleanup: true
+  on:
+    repo: kmtstemail/TravisCITest
+  name: $project_version
+
+cache:
+  directories:
+    - ~/.m2/repository
